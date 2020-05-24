@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  reporter_profile_id: 
+  reportable_type: MyString
+  reportable_id: 
+  problem: 1
+  status: 1
+  observations: MyText
+  reportable_metadata: 
+
+two:
+  reporter_profile_id: 
+  reportable_type: MyString
+  reportable_id: 
+  problem: 1
+  status: 1
+  observations: MyText
+  reportable_metadata: 

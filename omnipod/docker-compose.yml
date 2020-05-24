@@ -1,0 +1,34 @@
+version: '2'
+services:
+  omnipod_setup:
+    build: .
+    depends_on:
+      - postgres
+    environment:
+      - PASSENGER_APP_ENV=development
+    entrypoint: ./setup.sh
+  omnipod:
+    container_name: omnipod
+    build: .
+    depends_on:
+      - postgres
+      - omnipod_setup
+    environment:
+      - PASSENGER_APP_ENV=development
+    ports:
+      - "80:80"
+    volumes:
+      - .:/home/app/omnipod
+  postgres:
+    image: postgres:9.5.3
+    environment:
+      - POSTGRES_PASSWORD=password1234
+      - POSTGRES_USER=omnipod
+      - POSTGRES_DB=omnipod_development
+    volumes_from:
+      - postgres_data
+  postgres_data:
+      image: postgres:9.5.3
+      volumes:
+        - /var/lib/postgresql/data
+      command: /bin/true

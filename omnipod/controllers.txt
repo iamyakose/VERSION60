@@ -1,0 +1,56 @@
+# This file is auto-generated from the current state of the database. Instead
+# of editing this file, please use the migrations feature of Active Record to
+# incrementally modify your database, and then regenerate this schema definition.
+#
+# Note that this schema.rb definition is the authoritative source for your
+# database schema. If you need to create the application database on another
+# system, you should be using db:schema:load, not running all the migrations
+# from scratch. The latter is a flawed and unsustainable approach (the more migrations
+# you'll amass, the slower it'll run and the greater likelihood for issues).
+#
+# It's strongly recommended that you check this file into your version control system.
+
+ActiveRecord::Schema.define(version: 2020_03_09_220723) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.integer "record_id", null: false
+    t.integer "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+ rails generate scaffold comments comment:text profile_id:integer commentable_type:string commentable_id:integer 
+
+  follows  followable_type:string followable_id:integer follower_type:string follower_id:integer blocked:boolean
+
+  podcasts title:string description:string profile_id:integer duration:integer play_count:integer archived:boolean 
+
+  profiles name:string bio:string user_id:integer  fcm_token:string
+
+  reports reporter_profile_id:bigint reportable_type:string reportable_id:bigint problem:integer status:integer observations:text reportable_metadata:jsonb
+
+  taggings tag_id:integer taggable_type:string taggable_id:integer tagger_type:string  tagger_id:integer context:string
+
+  tags  name:string taggings_count:integer
+
+users provider:string uid:string encrypted_password:string reset_password_token:string reset_password_sent_at:datetime allow_password_change:boolean remember_created_at:datetime sign_in_count:integer current_sign_in_at:datetime last_sign_in_at:datetime current_sign_in_ip:string last_sign_in_ip:string confirmation_token:string confirmed_at:datetime confirmation_sent_at:datetime
+    unconfirmed_email:string email:string tokens:text username:string locale:string is_admin:boolean apple_uid:string
+   
+  votes  votable_type:string voter_type:string voter_id:integer vote_flag:boolean vote_scope:string vote_weight:integer 

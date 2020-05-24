@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  votable_type: MyString
+  voter_type: MyString
+  voter_id: 1
+  vote_flag: false
+  vote_scope: MyString
+  vote_weight: 1
+
+two:
+  votable_type: MyString
+  voter_type: MyString
+  voter_id: 1
+  vote_flag: false
+  vote_scope: MyString
+  vote_weight: 1
