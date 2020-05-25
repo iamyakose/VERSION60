@@ -15,8 +15,8 @@ RUN apt-get update && apt-get install -y -o Dpkg::Options::="--force-confold" ne
 RUN apt-get update && apt-get install -y libldap2-dev
 RUN apt-get update && apt-get install -y libidn11-dev
 
-RUN apt-get update && apt-get install libpng-dev
-RUN apt-get update && apt-get install --reinstall zlibc zlib1g zlib1g-dev
+RUN apt-get update && apt-get install -y libpng-dev
+RUN apt-get update && apt-get install -y --reinstall zlibc zlib1g zlib1g-dev
 
 # Enable Nginx and Passenger
 RUN rm -f /etc/service/nginx/down
