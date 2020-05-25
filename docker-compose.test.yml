@@ -1,6 +1,6 @@
 version: '2'
 services:
-  webapp_test:
+  omnipod_test:
     container_name: omnipod_test
     build: .
     depends_on:
