@@ -15,8 +15,6 @@ RUN apt-get update && apt-get install -y -o Dpkg::Options::="--force-confold" ne
 RUN apt-get update && apt-get install -y libldap2-dev
 RUN apt-get update && apt-get install -y libidn11-dev
 
-RUN apk add --no-cache build-base libxml2-dev libxslt-dev
-
 RUN gem install nokogiri -- --use-system-libraries
 
 
