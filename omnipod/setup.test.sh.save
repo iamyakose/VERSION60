@@ -7,3 +7,15 @@ while ! nc -z postgres 5432; do
 done
 
 echo "PostgreSQL started"
+
+
+
+
+
+
+
+#!/bin/sh
+
+#set -e
+
+# ./deploy/push.sh && ./deploy/migrate.sh
