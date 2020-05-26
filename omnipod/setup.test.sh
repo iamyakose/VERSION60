@@ -11,8 +11,3 @@ echo "PostgreSQL started"
 #bin/rails db:create RAILS_ENV=test
 #bin/rails db:migrate RAILS_ENV=test
 #bin/rake RAILS_ENV=test
-
-
-docker-compose run --rm omnipod bin/rails db:create RAILS_ENV=test
-docker-compose run --rm omnipod bin/rails db:migrate RAILS_ENV=test
-docker-compose run --rm omnipod bin/rake RAILS_ENV=test
