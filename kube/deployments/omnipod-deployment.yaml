@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: omnipod
+  labels:
+    app: omnipod
+spec:
+  ports:
+    - port: 80
+  selector:
+    app: omnipod
+    tier: frontend
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: omnipod
+  labels:
+    app: omnipod
+spec:
+  selector:
+    matchLabels:
+      app: omnipod 
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: omnipod
+        tier: frontend
+    spec:
+      containers:
+      - image: yakose/omnipod:b304085
+        name: omnipod
+        env:
+        - name: PASSENGER_APP_ENV
+          value: production
+        ports:
+        - containerPort: 80
+          name: omnipod
+        imagePullPolicy: Always
