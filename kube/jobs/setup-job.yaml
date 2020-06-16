@@ -9,9 +9,9 @@ spec:
     spec:
       containers:
         - name: setup
-          image: yakose/omnipod:3294b4e
+          image: yakose/omnipod:LAST_COMMIT
           command: ["/bin/bash", "./setup.production.sh"]
           env:
             - name: PASSENGER_APP_ENV
-              value: development
+              value: production
       restartPolicy: Never
