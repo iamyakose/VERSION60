@@ -10,12 +10,13 @@ spec:
   template:
     metadata:
       name: db-migrate
-    spec: restartPolicy: Never
+    spec:
+      restartPolicy: Never
       containers:
         - name: db-migrate
           image: yakose/omnipod:LAST_COMMIT
-          command: 
+          command:
             - bundle
             - execute
             - rails
-            - db:migrate        
+            - db:migrate
