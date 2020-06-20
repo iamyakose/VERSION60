@@ -8,7 +8,7 @@ LC=$(git rev-parse --short HEAD)
 kubectl delete jobs/setup || true
 
 # replace LAST_COMMIT with latest commit hash output the result to a tmp file
-sed "s/omnipod:LAST_COMMIT/omnipod:$LC/g" kube/jobs/setup-job.yaml > setup-job.yaml.tmp
+sed "s/omnipod:LAST_COMMIT/omnipod:$LC/g" setup-job.yaml > setup-job.yaml.tmp
 
 # run the updated tmp job in the cluster and then delete the file
 kubectl create -f setup-job.yaml.tmp &&
