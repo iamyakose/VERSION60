@@ -1,20 +1,21 @@
 class PagesController < ApplicationController
-    def welcome
-      render json: {message: 'hello!'}, status: 200
-    end
-
-    def product
-       render json:{
-        “productID” : “KL2432”,
-        “productName” : “Hugo Boss men’s suit”,
-        “productPrice” :  2500, 
-        “productPriceFormatted” : “DKK 2.500,00” 
-        “inStock” : true, 
-        “relatedProducts”: [
-              {“productID”: “KL2532”},
-              {“productID”: “KL2341”}
-        ]
-        }, status: 200 
-    end
+  def welcome
+    render json: {message: 'hello!'}, status: 200
   end
-  
+
+  def products
+   render json:
+  {
+    "Id": "jenlooper-cactus",
+    "Maker": "@jenlooper",
+    "img": "https://user-images.githubusercontent.com/41929050/61567048-13938600-aa33-11e9-9cfd-712191013192.jpeg",
+    "Url": "https://www.hackster.io/agent-hawking-1/the-quantified-cactus-an-easy-plant-soil-moisture-sensor-e65393",
+    "Title": "The Quantified Cactus: An Easy Plant Soil Moisture Sensor",
+    "Description": "This project is a good learning project to get comfortable with soldering and programming an Arduino.",
+    "Ratings": [
+      5,
+      5
+    ]
+  },status: 200
+  end
+end
