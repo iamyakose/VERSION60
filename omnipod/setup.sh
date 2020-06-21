@@ -8,4 +8,6 @@ done
  
 echo "PostgreSQL Server now started"
 
-#bin/rails db:migrate
+bin/rails db:migrate RAILS_ENV=development
+
+
