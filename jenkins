@@ -1,0 +1,55 @@
+node{
+    
+    stage("Git Clone"){
+        
+        git credentialsId: 'git_account', url: 'https://github.com/cph-bachelor/VERSION60.git'
+    }
+    stage("Create Build and Run"){
+        sh label: '', script: '''docker-compose -f docker-compose.test.yml build
+
+        docker-compose -f docker-compose.test.yml run --rm omnipod_test
+
+        '''
+    }
+    stage("Create Test Environment"){
+         sh label: '', script: '''docker-compose -f docker-compose.test.yml run --rm omnipod_test bin/rails db:create RAILS_ENV=test
+            docker-compose -f docker-compose.test.yml   run --rm omnipod_test bin/rails db:migrate RAILS_ENV=test
+            docker-compose -f docker-compose.test.yml  run --rm omnipod_test bin/rake RAILS_ENV=test
+            
+            if [ $? -eq 0 ]
+            
+            then        
+            	echo "All tests passed!"
+                
+              else        
+              	echo "Tests has failed! "    
+                
+              exit 1
+              
+            fi
+            '''
+    }
+    stage("Docker Hub Push"){
+        
+        withCredentials([string(credentialsId: 'DOCKER_HUB_CREDENTIALS', variable: 'DOCKER_HUB_CREDENTIALS')]) {
+            sh "docker login -u yakose -p ${DOCKER_HUB_CREDENTIALS}"
+        }
+             
+        sh label: '', script: '''set -x
+
+        LC=$(git rev-parse --short HEAD)
+        docker build -f Dockerfile -t yakose/omnipod:${LC} .
+        docker push yakose/omnipod:${LC}
+        kubectl set image deployment omnipod omnipod=yakose/omnipod:${LC}
+       
+        '''
+      
+    }   
+    stage("Deploy To Kubernetes Cluster"){
+       
+        sh 'kubectl apply -f kube/deployments/omnipod-deployment.yaml'
+        sh 'kubectl apply -f kube/deployments/postgres-deployment.yaml'
+        
+    }
+}
+
