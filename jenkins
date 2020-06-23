@@ -2,7 +2,7 @@ node{
     
     stage("Git Clone"){
         
-        git credentialsId: 'git_account', url: 'https://github.com/cph-bachelor/VERSION60.git'
+        git credentialsId: 'git_account', url: 'https://github.com/iamyakose/VERSION60.git'
     }
     stage("Create Build and Run"){
         sh label: '', script: '''docker-compose -f docker-compose.test.yml build
