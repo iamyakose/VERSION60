@@ -109,7 +109,7 @@ GEM
       sprockets (>= 3.0.0)
     thor (1.0.1)
     thread_safe (0.3.6)
-    tzinfo (1.2.7)
+    tzinfo (1.2.10)
       thread_safe (~> 0.1)
     tzinfo-data (1.2020.1)
       tzinfo (>= 1.0.0)
@@ -123,6 +123,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   listen (~> 3.0.5)
+  nokogiri (~> 1.10.9)
   pg (~> 0.18)
   puma (~> 3.0)
   rails (~> 5.0.0, >= 5.0.0.1)
